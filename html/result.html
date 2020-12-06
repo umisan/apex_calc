@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_tasman.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Legendsポイント逆引き計算</title>
+  <style>
+    .header {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .result {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+    div {
+      width: 100%;
+    }
+    .cand-table {
+      display: table;
+      text-align: center;
+      width: 80%;
+    }
+    .table-title {
+      border-bottom: solid 1px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h2>Apex逆引き計算</h2>
+  </header>
+  <hr>
+ <div>
+  <p style="text-align: center">Apex逆引き計算は、ランクマッチであるポイントを得るために必要な順位とキル数をクラス別に計算するサイトです。</p>
+  <form action="/index" method="POST">
+    <p>I need <input type="number" name="point" placeholder="ポイントを入力してください"></p>
+    <input type="submit">
+  </form>
+ </div>
+ <hr>
+ <div class="result">
+  <div class="center">
+    <h2>必要順位&キル数</h2>
+  </div>
+  <p class="center">{{ .Point }}ポイントを取得するためには</p>
+  {{ range $result := .Table }}
+    <div>
+      <h3 class="center table-title">{{ $result.Class }}</h3>
+      <div class="center">
+        <table class="cand-table">
+          <thead>
+            <tr>
+              <th>順位</th>
+              <th>キル数</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $cand := $result.Cands }}
+              <tr>
+                <td>{{ $cand.Rank }}</td>
+                <td>{{ $cand.Kill }}</td>
+              </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {{ end }}
+ </div>
+</body>
+</html>
