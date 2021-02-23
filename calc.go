@@ -1,11 +1,11 @@
 package main
 
-const maxKill = 5
-const worstRank = 11
-const rankResoultion = 11
+const maxKill = 6
+const worstRank = 14
+const rankResoultion = 14
 
-var rankPointTable []int = []int{0, 10, 10, 20, 20, 30, 30, 40, 40, 60, 100}
-var rankLeverageTable []int = []int{10, 12, 12, 12, 12, 12, 15, 15, 20, 20, 25}
+var rankPointTable []int = []int{0, 5, 5, 5, 10, 10, 20, 20, 30, 30, 40, 40, 60, 100}
+var rankLeverageTable []int = []int{10, 10, 10, 10, 12, 12, 12, 12, 12, 15, 15, 20, 20, 25}
 var classEntryFeeTable []int = []int{0, 12, 24, 36, 48, 60, 60}
 
 type Cand struct {
@@ -30,8 +30,8 @@ func reverseCalculation(needPoint int, class int) CandList {
 }
 
 func calcKillPoint(kill, leverage int) int {
-	if kill > 5 {
-		kill = 5
+	if kill > maxKill {
+		kill = maxKill
 	}
 	return kill * leverage
 }

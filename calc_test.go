@@ -18,7 +18,8 @@ func TestCalcKillPoint(t *testing.T) {
 		{input: Input{kill: 0, leverage: 10}, output: 0},
 		{input: Input{kill: 1, leverage: 10}, output: 10},
 		{input: Input{kill: 5, leverage: 20}, output: 100},
-		{input: Input{kill: 6, leverage: 20}, output: 100},
+		{input: Input{kill: 6, leverage: 20}, output: 120},
+		{input: Input{kill: 7, leverage: 20}, output: 120},
 	}
 	for _, c := range cases {
 		actual := calcKillPoint(c.input.kill, c.input.leverage)
@@ -33,9 +34,9 @@ func TestMapTableIndexToRank(t *testing.T) {
 		input  int
 		output int
 	}{
-		{input: 0, output: 11},
-		{input: 5, output: 6},
-		{input: 10, output: 1},
+		{input: 0, output: 14},
+		{input: 5, output: 9},
+		{input: 10, output: 4},
 	}
 	for _, c := range cases {
 		actual := mapTableIndexToRank(c.input)
@@ -60,6 +61,7 @@ func TestReverseCalculation(t *testing.T) {
 				class:     1,
 			},
 			output: CandList{
+				Cand{Rank: 5, Kill: 6},
 				Cand{Rank: 4, Kill: 5},
 				Cand{Rank: 3, Kill: 4},
 				Cand{Rank: 2, Kill: 3},
@@ -71,7 +73,9 @@ func TestReverseCalculation(t *testing.T) {
 				needPoint: 200,
 				class:     3,
 			},
-			output: CandList{},
+			output: CandList{
+				Cand{Rank: 1, Kill: 6},
+			},
 		},
 	}
 	for _, c := range cases {
