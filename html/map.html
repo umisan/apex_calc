@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  {{ template "google" }}
+  {{ template "meta" }}
+  <title>Apex安置統計画像</title>
+  <style>
+    header {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      border-bottom: 1px solid;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .color-desc {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+    }
+    .color-desc-elm {
+
+    }
+  </style>
+  </head>
+  <body class="container">
+    <header class="mid">
+      <h2>Apexエリア統計画像</h2>
+    </header>
+    <h3>シーズン8スプリット2の第5収縮統計画像</h3>
+    <img src="https://mapanalyze.s3-ap-northeast-1.amazonaws.com/latest.jpg" alt="統計画像">
+    <div class="color-desc">
+      <div class="color-desc-elm" style="background-color: #f6ecec">~20%</div>
+      <div class="color-desc-elm" style="background-color: #f6c8c7">21~40%</div>
+      <div class="color-desc-elm" style="background-color: #f6a4a2">41~60%</div>
+      <div class="color-desc-elm" style="background-color: #f6807d">61~80%</div>
+      <div class="color-desc-elm" style="background-color: #f65c59">81~100%</div>
+    </div>
+    <p>機械的に集計しているので、誤検出、未検出が発生している可能性があります</p>
+    <h3 class="mid">集計方法</h3>
+    <p>第5ラウンドのマップのスクリーンショットを、#apex_mapとハッシュタグをつけてtwitterに投稿することで集計に参加することができます。</p>
+    <p>1,920×1,080の画像のみ受け付けます。</p>
+  </body>
+</html>

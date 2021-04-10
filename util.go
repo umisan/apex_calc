@@ -59,8 +59,8 @@ func getParameterOrDefaultString(parameters url.Values, key, defaultValue string
 	return candidates[0]
 }
 
-func parseHtmlTemplate(filename string) (*template.Template, ApplicationError) {
-	indexTemplate, err := template.ParseFiles(filename)
+func parseHtmlTemplate(filename ...string) (*template.Template, ApplicationError) {
+	indexTemplate, err := template.ParseFiles(filename...)
 	if err != nil {
 		return nil, HtmlParseError{}
 	}
