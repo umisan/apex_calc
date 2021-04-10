@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMSP61D9F1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-JMSP61D9F1');
-  </script>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_tasman.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ template "google" }}
+  {{ template "meta" }}
   <title>Apex Legendsポイント逆引き計算</title>
   <style>
-    .header {
+    header {
       display: flex;
       justify-content: center;
+      border-bottom: 1px solid;
       width: 100%;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .left-align {
+      width: 80%;
+      display: flex;
+      justify-content: flex-start;
     }
     .result {
       display: flex;
@@ -44,13 +46,12 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <h2>Apex逆引き計算</h2>
+  <header>
+    <h1>Apex逆引き計算</h1>
   </header>
-  <hr>
  <div>
-  <p style="text-align: center">Apex逆引き計算は、ランクマッチであるポイントを得るために必要な順位とキル数をクラス別に計算するサイトです。</p>
-  <form action="/index" method="POST">
+  <p>ランクマッチであるポイントを得るために必要な順位とキル数をクラス別に計算するサイトです。</p>
+  <form action="/calc" method="POST">
     <p>I need <input type="number" name="point" placeholder="ポイントを入力してください"></p>
     <input type="submit">
   </form>

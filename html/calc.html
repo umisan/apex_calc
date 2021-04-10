@@ -3,7 +3,7 @@
 <head>
   {{ template "google" }}
   {{ template "meta" }}
-  <title>Apexツール置き場</title>
+  <title>Apex Legendsポイント逆引き計算</title>
   <style>
     header {
       display: flex;
@@ -22,16 +22,20 @@
       display: flex;
       justify-content: flex-start;
     }
-   </style>
+
+  </style>
 </head>
 <body class="container">
   <header>
-    <h1>Apexツール置き場</h1>
+    <h1>Apex逆引き計算</h1>
   </header>
-  <h2>コンテンツ</h2>
-  <ul>
-    <li><a href="map">マップ解析ツール</a></li>
-    <li><a href="calc">RP逆引き計算</a></li>
-  </ul>
+  <hr>
+  <p>ランクマッチであるポイントを得るために必要な順位とキル数をクラス別に計算するサイトです。</p>
+ <div>
+  <form action="/calc" method="POST">
+    <p>I need <input type="number" name="point" placeholder="ポイントを入力してください"></p>
+    <input type="submit">
+  </form>
+ </div>
 </body>
 </html>

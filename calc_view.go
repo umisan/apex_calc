@@ -4,23 +4,23 @@ import (
 	"net/http"
 )
 
-type IndexView struct {
+type CalcView struct {
 	defaultPoint int
 	templatePath string
 }
 
-func createIndexView() IndexView {
+func createCalcView() IndexView {
 	return IndexView{
 		defaultPoint: 100,
-		templatePath: "html/index.html",
+		templatePath: "html/calc.html",
 	}
 }
 
-func (v IndexView) Validate(r *http.Request) ApplicationError {
+func (v CalcView) Validate(r *http.Request) ApplicationError {
 	return nil
 }
 
-func (v IndexView) WriteResponse(w http.ResponseWriter, r *http.Request) {
+func (v CalcView) WriteResponse(w http.ResponseWriter, r *http.Request) {
 	indexTemplate, err := parseHtmlTemplate(v.templatePath, "html/_google.html", "html/_meta_link.html")
 	if err != nil {
 		handleError(w, err)
