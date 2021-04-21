@@ -17,7 +17,7 @@ func (v MapView) Validate(r *http.Request) ApplicationError {
 }
 
 func (v MapView) WriteResponse(w http.ResponseWriter, r *http.Request) {
-	indexTemplate, err := parseHtmlTemplate(v.templatePath, "html/_google.html", "html/_meta_link.html")
+	indexTemplate, err := parseHtmlTemplate(v.templatePath, components)
 	if err != nil {
 		handleError(w, err)
 	}

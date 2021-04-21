@@ -3,35 +3,34 @@
 <head>
   {{ template "google" }}
   {{ template "meta" }}
+  <style> 
+  #content-list {
+    display: flex;
+    justify-content: space-around;
+  }
+  #content-list>div {
+    width: 40%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  </style>
   <title>Apexツール置き場</title>
-  <style>
-    header {
-      display: flex;
-      justify-content: center;
-      border-bottom: 1px solid;
-      width: 100%;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-    .left-align {
-      width: 80%;
-      display: flex;
-      justify-content: flex-start;
-    }
-   </style>
 </head>
-<body class="container">
-  <header>
-    <h1>Apexツール置き場</h1>
-  </header>
-  <h2>コンテンツ</h2>
-  <ul>
-    <li><a href="map">マップ解析ツール</a></li>
-    <li><a href="calc">RP逆引き計算</a></li>
-  </ul>
+<body>
+  {{ template "title" }}
+  <div class="section container">
+    <p class="title is-1">コンテンツ</p>
+    <hr>
+    <div class="block" id="content-list">
+      <div class="box">
+        <a href="map">マップ解析</a>
+      </div>
+      <div class="box">
+        <a href="calc">RP逆引き計算</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

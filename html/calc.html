@@ -3,39 +3,31 @@
 <head>
   {{ template "google" }}
   {{ template "meta" }}
-  <title>Apex Legendsポイント逆引き計算</title>
-  <style>
-    header {
-      display: flex;
-      justify-content: center;
-      border-bottom: 1px solid;
-      width: 100%;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-    .left-align {
-      width: 80%;
-      display: flex;
-      justify-content: flex-start;
-    }
-
-  </style>
+  <title>Apexツール置き場</title>
 </head>
-<body class="container">
-  <header>
-    <h1>Apex逆引き計算</h1>
-  </header>
-  <hr>
-  <p>ランクマッチであるポイントを得るために必要な順位とキル数をクラス別に計算するサイトです。</p>
- <div>
-  <form action="/calc" method="POST">
-    <p>I need <input type="number" name="point" placeholder="ポイントを入力してください"></p>
-    <input type="submit">
-  </form>
- </div>
+<body>
+  {{ template "title" }}
+  <div class="section container">
+    <p class="title is-1">RP逆引き計算</p>
+    <hr>
+    <div class="content">
+      <p>ランクマッチであるポイントを得るために必要な順位とキル数をクラス別に計算するサイトです。</p>
+    </div>
+    <div>
+      <form action="/calc" method="POST">
+        <div class="field">
+          <label for="point" class="label">必要RP</label>
+          <div class="control">
+            <input class="input" type="number" name="point" placeholder="ポイントを入力してください">
+          </div>
+        </div>   
+        <div class="field">
+          <div class="control">
+            <button class="button">計算</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
