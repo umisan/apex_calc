@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{ template "google" }}
+  {{ template "meta" }}
+  <title>Apexツール置き場</title>
+  <style>
+  #gunlist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  #gundetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  </style>
+</head>
+<body class="container">
+  {{ template "title" }}
+  <div class="section container">
+    <p class="title is-1">銃情報</p>
+    <hr>
+    <div id="gunlist">
+      <div class="box"><a href="#g7">G7スカウト</a></div>
+      <div class="box"><a href="#alternator">オルタネータ</a></div>
+      <div class="box"><a href="#r99">R99</a></div>
+      <div class="box"><a href="#r301">R301カービン</a></div>
+      <div class="box"><a href="#p2020">P2020</a></div>
+      <div class="box"><a href="#re45">RE45</a></div>
+      <div class="box"><a href="#flatline">フラットライン</a></div>
+      <div class="box"><a href="#hemlok">ヘムロック</a></div>
+      <div class="box"><a href="#spitfire">スピットファイア</a></div>
+      <div class="box"><a href="#wingman">ウィングマン</a></div>
+      <div class="box"><a href="#repeater">30-30リピーター</a></div>
+      <div class="box"><a href="#lstar">Lスター</a></div>
+      <div class="box"><a href="#havoc">ハボック</a></div>
+      <div class="box"><a href="#devotion">ディボーション</a></div>
+      <div class="box"><a href="#volt">ボルト</a></div>
+      <div class="box"><a href="#triple-take">トリプルテイク</a></div>
+      <div class="box"><a href="#longbow">ロングボウ</a></div>
+      <div class="box"><a href="#charge-rifle">チャージライフル</a></div>
+      <div class="box"><a href="#sentinel">センチネル</a></div>
+      <div class="box"><a href="#mastiff">マスティフ</a></div>
+      <div class="box"><a href="#eva8">EVA8</a></div>
+      <div class="box"><a href="#mozambique">モザンビーク</a></div>
+      <div class="box"><a href="#kraber">クレーバー</a></div>
+      <div class="box"><a href="#prowler">プラウラー</a></div>
+    </div>
+    <hr>
+    <p class="title is-2">ライトアモ</p>
+    <div id="gundetails">
+      {{ range .LightGunDetails }}
+        {{ template "gundetail" . }}
+      {{ end }}
+    </div>
+    <hr>
+    <p class="title is-2">ヘビーアモ</p>
+    <div id="gundetails">
+      {{ range .HeavyGunDetails }}
+        {{ template "gundetail" . }}
+      {{ end }}
+    </div>
+    <hr>
+    <p class="title is-2">エネルギーアモ</p>
+    <div id="gundetails">
+      {{ range .EnergyGunDetails }}
+        {{ template "gundetail" . }}
+      {{ end }}
+    </div>
+    <hr>
+    <p class="title is-2">スナイパーアモ</p>
+    <div id="gundetails">
+      {{ range .SniperGunDetails }}
+        {{ template "gundetail" . }}
+      {{ end }}
+    </div>
+    <hr>
+    <p class="title is-2">ショットガンアモ</p>
+    <div id="gundetails">
+      {{ range .ShotGunDetails }}
+        {{ template "gundetail" . }}
+      {{ end }}
+    </div>
+    <hr>
+    <p class="title is-2">物資武器</p>
+    <div id="gundetails">
+      {{ range .SpecialGunDetails }}
+        {{ template "gundetail" . }}
+      {{ end }}
+    </div>
+  </div>
+</body>
+</html>

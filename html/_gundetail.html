@@ -1,0 +1,31 @@
+{{ define "gundetail" }}
+<div class="card" id="{{ .Id }}">
+  <header class="card-header">
+    <p class="card-header-title">{{ .Name }}</p>
+  </header>
+  <div class="card-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>部位</td>
+          <td>ダメージ</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>頭</td>
+          <td>{{ .Head }}</td>
+        </tr>
+        <tr>
+          <td>胴</td>
+          <td>{{ .Body }}</td>
+        </tr>
+        <tr>
+          <td>足</td>
+          <td>{{ .Foot }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{{ end }}

@@ -4,6 +4,7 @@ var components []string = []string{
 	"html/_google.html",
 	"html/_meta_link.html",
 	"html/_title.html",
+	"html/_gundetail.html",
 }
 
 var urls []Url = []Url{
@@ -12,4 +13,5 @@ var urls []Url = []Url{
 	{Path: "/calc", Method: "GET", View: createCalcView()},
 	{Path: "/calc", Method: "POST", View: createPostIndexView()},
 	{Path: "/map", Method: "GET", View: createMapView()},
+	{Path: "/guns", Method: "GET", View: createGunsView()},
 }
