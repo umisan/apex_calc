@@ -17,17 +17,24 @@ type Url struct {
 type HttpServer struct {
 	Urls    []Url
 	Port    string
+	Static  string
 	Router  *mux.Router
 	Factory HandlerFactory
 }
 
 func CreateHttpServer() HttpServer {
-	server := HttpServer{Urls: urls, Port: ":" + os.Getenv("PORT"), Factory: HandlerFactory{}}
+	server := HttpServer{
+		Urls:    urls,
+		Port:    ":" + os.Getenv("PORT"),
+		Static:  "./html/static",
+		Factory: HandlerFactory{},
+	}
 	return server
 }
 
 func (server HttpServer) Start() {
 	server.Router = mux.NewRouter()
+	server.Router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir(server.Static))))
 	server.registerUrls()
 	log.Fatal(http.ListenAndServe(server.Port, nil))
 }
