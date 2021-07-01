@@ -3,7 +3,7 @@
 <head>
   {{ template "google" }}
   {{ template "meta" }}
-  <title>Apexツール置き場</title>
+  <title>マップ解析</title>
   <style>
   #color-desc {
     display: flex;
@@ -13,6 +13,28 @@
     color: white;
   }
   </style>
+  <script>
+  function formatDate(dt) {
+      var y = dt.getFullYear();
+      var m = ('00' + (dt.getMonth()+1)).slice(-2);
+      var d = ('00' + dt.getDate()).slice(-2);
+      return (y  + m  + d);
+  } 
+  var nowDate = new Date()
+  nowDate.setDate(nowDate.getDate() - 3);
+  const jstNow = new Date(nowDate + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
+  const referenceDate = formatDate(jstNow);
+  fetch('https://map-analyze.herokuapp.com/api/log/get?referenceDate=' + referenceDate)
+  .then(
+    response => response.json()
+  )
+  .then(
+    data => {
+      targetCell = document.querySelector('#successRate')
+      targetCell.textContent = data.successRate === 'N/A' ? data.successRate : data.successRate + "%"
+    }
+  )
+  </script>
 </head>
 <body class="container">
   {{ template "title" }}
@@ -28,6 +50,18 @@
     </ul>
     <hr>
     <p class="title is-2" id="s9s2">シーズン9スプリット2</p>
+    <table class="table table is-narrow has-text-centered is-size-4">
+      <thead>
+        <tr>
+          <th>過去3日間の検出率</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="successRate" class="has-text-primary"></td>
+        </tr>
+      </tbody>
+    </table>
     <p class="title is-3">安置リスト</p>
     <img src="https://mapanalyze.s3-ap-northeast-1.amazonaws.com/latest.jpg" alt="統計画像">
     <p class="title is-3">エリア統計</p>
