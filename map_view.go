@@ -12,6 +12,12 @@ func createMapView() MapView {
 	}
 }
 
+func createMapViewEn() MapView {
+	return MapView{
+		templatePath: "html/map_en.html",
+	}
+}
+
 func (v MapView) Validate(r *http.Request) ApplicationError {
 	return nil
 }

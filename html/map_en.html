@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{ template "google" }}
+  {{ template "meta" }}
+  <title>Map analyze</title>
+  <style>
+  #color-desc {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to right, #6e42ff,  #ff1463);
+    width: 50%;
+    color: white;
+  }
+  </style>
+  <script>
+  function formatDate(dt) {
+      var y = dt.getFullYear();
+      var m = ('00' + (dt.getMonth()+1)).slice(-2);
+      var d = ('00' + dt.getDate()).slice(-2);
+      return (y  + m  + d);
+  } 
+  var nowDate = new Date()
+  nowDate.setDate(nowDate.getDate() - 3);
+  const jstNow = new Date(nowDate + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
+  const referenceDate = formatDate(jstNow);
+  fetch('https://map-analyze.herokuapp.com/api/log/get?referenceDate=' + referenceDate)
+  .then(
+    response => response.json()
+  )
+  .then(
+    data => {
+      targetCell = document.querySelector('#successRate')
+      targetCell.textContent = data.successRate === 'N/A' ? data.successRate : data.successRate + "%"
+    }
+  )
+  </script>
+</head>
+<body class="container">
+  {{ template "title_en" }}
+  <div class="section container">
+    <p class="title is-1">Area analysis pictures</p>
+    <hr>
+    <p class="title is-2">Season</p>
+    <hr>
+    <ul>
+      <li><a href="#s9s2">Season 9 / Split 2</a></li>
+      <li><a href="#s9s1">Season 9 / Split 1</a></li>
+      <li><a href="#s8s2">Season 8 / Split 2</a></li>
+    </ul>
+    <hr>
+    <p class="title is-2" id="s9s2">Season 9 / Split 2</p>
+    <table class="table table is-narrow has-text-centered is-size-4">
+      <thead>
+        <tr>
+          <th>Detection rate in the past 3 days</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="successRate" class="has-text-primary"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="title is-3">Safe area map</p>
+    <img src="https://mapanalyze.s3-ap-northeast-1.amazonaws.com/latest.jpg" alt="統計画像">
+    <p class="title is-3">Area analysis</p>
+    <img src="https://mapanalyze.s3-ap-northeast-1.amazonaws.com/area_latest.jpg" alt="統計画像">
+    <div id="color-desc">
+      <div class="left">Low</div>
+      <div class="right">Height</div>
+    </div>
+    <hr>
+    <p class="title is-2" id="s9s1">Season 9 / Split 1</p>
+    <p class="title is-3">Safe area map</p>
+    <img src="/static/s9s1.jpg" alt="統計画像">
+    <p class="title is-3">Area analysis</p>
+    <img src="/static/s9s1a.jpg" alt="統計画像">
+    <div id="color-desc">
+      <div class="left">Low</div>
+      <div class="right">Height</div>
+    </div>
+    <hr>
+    <p class="title is-2" id="s8s2">Season 8 / Split 2</p>
+    <img src="/static/s8s2.jpg" alt="統計画像">
+    <div id="color-desc">
+      <div class="left">Low</div>
+      <div class="right">Height</div>
+    </div>
+  </div>
+  <div class="section container">
+    <p class="title is-2">How to join the aggregation</a>
+    <ul>
+      <li>1. Take a screenshot of the map (16:9 is only available)</li>
+      <li>2. Upload to the Twitter with "#apex_map"</li>
+    </ul>
+    An example of the screenshot
+    <img src="/static/example.jpg" alt="exapmle">
+  </div>
+</body>
+</html>

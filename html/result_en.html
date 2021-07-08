@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {{ template "google" }}
+  {{ template "meta" }}
+  <title>RP reverse calculator</title>
+  <style>
+  #cand-table {
+    display: flex;
+    justify-content: center;
+  }
+  #cand-table>table {
+    width: 100%;
+  }
+  </style>
+</head>
+<body>
+  {{ template "title_en" }}
+  <div class="section container">
+    <p class="title is-1">RP reverse calculator</p>
+    <hr>
+    <div class="content">
+      <p>This page calculates rank and kill points which you need to get the specific RP in one match</p>
+    </div>
+    <div>
+      <form action="/calc" method="POST">
+        <div class="field">
+          <label for="point" class="label">I need</label>
+          <div class="control">
+            <input class="input" type="number" name="point" placeholder="input the RP">
+          </div>
+        </div>   
+        <div class="field">
+          <div class="control">
+            <button class="button">calculate</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+ <hr>
+ <div class="section container">
+  <p class="title is-2">Rank&Kill points</p>
+  <div class="content">
+    <p>to get {{ .Point }} points</p>
+  </div>
+  {{ range $result := .Table }}
+    <div>
+      <p class="title is-3">{{ $result.Class }}</p>
+      <div id="cand-table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Kill points</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $cand := $result.Cands }}
+              <tr>
+                <td>{{ $cand.Rank }}</td>
+                <td>{{ $cand.Kill }}</td>
+              </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {{ end }}
+ </div>
+</body>
+</html>

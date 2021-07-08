@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {{ template "google" }}
+  {{ template "meta" }}
+  <style> 
+  #content-list {
+    display: flex;
+    justify-content: space-around;
+  }
+  #content-list>div {
+    width: 40%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  </style>
+  <title>Apex Tools</title>
+</head>
+<body>
+  {{ template "title_en" }}
+  <div class="section container">
+    <p class="title is-1">Contents</p>
+    <hr>
+    <div class="block" id="content-list">
+      <div class="box">
+        <a href="map_en">Map analyze</a>
+      </div>
+      <div class="box">
+        <a href="calc_en">RP reverse calculator</a>
+      </div>
+      <div class="box">
+        <a href="guns_en">gun information</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

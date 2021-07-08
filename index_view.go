@@ -16,6 +16,13 @@ func createIndexView() IndexView {
 	}
 }
 
+func createIndexViewEn() IndexView {
+	return IndexView{
+		defaultPoint: 100,
+		templatePath: "html/index_en.html",
+	}
+}
+
 func (v IndexView) Validate(r *http.Request) ApplicationError {
 	return nil
 }

@@ -16,6 +16,13 @@ func createCalcView() IndexView {
 	}
 }
 
+func createCalcViewEn() IndexView {
+	return IndexView{
+		defaultPoint: 100,
+		templatePath: "html/calc_en.html",
+	}
+}
+
 func (v CalcView) Validate(r *http.Request) ApplicationError {
 	return nil
 }

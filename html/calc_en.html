@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {{ template "google" }}
+  {{ template "meta" }}
+  <title>RP reverse calculator</title>
+</head>
+<body>
+  {{ template "title_en" }}
+  <div class="section container">
+    <p class="title is-1">RP reverse calculator</p>
+    <hr>
+    <div class="content">
+      <p>This page calculates rank and kill points which you need to get the specific RP in one match</p>
+    </div>
+    <div>
+      <form action="/calc_en" method="POST">
+        <div class="field">
+          <label for="point" class="label">I need</label>
+          <div class="control">
+            <input class="input" type="number" name="point" placeholder="input the RP">
+          </div>
+        </div>   
+        <div class="field">
+          <div class="control">
+            <button class="button">calculate</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
